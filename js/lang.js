@@ -17,7 +17,7 @@
       stat_matches: 'Матчтар',
       stat_wins: 'Жеңіс',
       stat_draws: 'Тең',
-      stat_losses: 'Ойпотай',
+      stat_losses: 'Жеңіліс',
       recent_news: 'Соңғы жаңалықтар',
       news_item1_title: 'Жаңа маусым басталды',
       news_item1_text: 'Біздің команда жаңа маусымды жеңіспен бастады. Тағы да көп жаңалықтар алда.',
