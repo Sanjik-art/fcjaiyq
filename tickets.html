@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="kk">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FC JAIYQ | Билеттер</title>
+    <link rel="stylesheet" href="CSS/jaiyq.css">
+    <script src="js/lang.js" defer></script>
+    <style>
+      .seats-section { margin-top: 30px; }
+      .stadium-selector { margin: 20px 0; display: flex; gap: 10px; align-items: center; }
+      .stadium-selector label { font-weight: 700; }
+      .stadium-selector select { padding: 8px 12px; border-radius: 6px; border: 1px solid var(--card-border); }
+      
+      .tribunes { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
+      .tribune { background: var(--card-bg); padding: 15px; border-radius: 10px; border: 1px solid var(--card-border); }
+      .tribune h4 { margin: 0 0 10px 0; color: var(--accent-dark); }
+      
+      .seats-grid { display: grid; gap: 4px; justify-content: start; }
+      .seat { width: 24px; height: 24px; border-radius: 4px; cursor: pointer; border: 1px solid #ccc; text-align: center; font-size: 10px; line-height: 24px; }
+      .seat.available { background: #dff0d8; border-color: #b2d8a3; }
+      .seat.selected { background: #f7d08a; border-color: #e5b46f; }
+      .seat.sold { background: #ddd; border-color: #ccc; cursor: not-allowed; color: #999; }
+      
+      .legend { display: flex; gap: 15px; margin: 15px 0; font-size: 0.9em; }
+      .legend-item { display: flex; align-items: center; gap: 6px; }
+      .legend-box { width: 16px; height: 16px; border-radius: 3px; border: 1px solid #999; }
+      
+      .summary-box { background: var(--card-bg); padding: 15px; border-radius: 10px; border-left: 3px solid var(--light-blue); margin: 20px 0; }
+      .summary-box h3 { margin: 0 0 10px 0; color: var(--accent-dark); }
+      .summary-box p { margin: 5px 0; }
+      
+      .buy-section { display: flex; gap: 10px; align-items: center; margin-top: 15px; }
+      .buy-section button { margin: 0; }
+    </style>
+  </head>
+  <body data-page="tickets">
+
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <div class="logo">
+          <a href="indexjaiyq.html" aria-label="FC JAIYQ басты бет">
+            <img src="png/emblem1.png" alt="FC JAIYQ Logo" style="height: 40px; margin-right: 10px; vertical-align: middle;">
+            FC JAIYQ
+          </a>
+        </div>
+
+        <nav class="main-nav" role="navigation" aria-label="Primary">
+          <ul>
+            <li><a href="indexjaiyq.html" data-key="home">Басты бет</a></li>
+            <li><a href="team.html" data-key="team">Құрама</a></li>
+            <li><a href="news.html" data-key="news">Жаңалықтар</a></li>
+            <li><a href="fixtures.html" data-key="fixtures">Матчтар</a></li>
+            <li><a href="tickets.html" data-key="tickets">Билеттер</a></li>
+            <li><a href="contact.html" data-key="contact">Байланыс</a></li>
+          </ul>
+        </nav>
+
+        <div class="language-switcher" aria-label="Тіл таңдау">
+          <button type="button" data-lang="kk">Қазақша</button>
+          <button type="button" data-lang="ru">Русский</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="tickets-section">
+        <div class="container">
+          <h1 data-key="tickets">Билеттер</h1>
+          
+          <div id="match-info" style="background-color: var(--card-bg); padding: 20px; border-radius: 10px; margin-bottom: 30px; border-left: 3px solid var(--light-blue);">
+            <h2 id="match-title" data-key="select_match">Матчты таңдаңыз</h2>
+            <p id="match-details" style="color: var(--muted); font-size: 1.1em;" data-key="match_subtitle">Ойынға арналған билеттерді таңдаңыз</p>
+          </div>
+
+          <!-- Stadium Selector -->
+          <div class="stadium-selector">
+            <label for="stadium-select">Стадион таңдаңыз:</label>
+            <select id="stadium-select">
+              <option value="s8000">"Петро Атоян" атындағы стадион — 8000 орын (2 трибуна)</option>
+              <option value="s1500">"Ақжайық" стадионы — 1500 орын (1 трибуна)</option>
+            </select>
+          </div>
+
+          <!-- Legend -->
+          <div class="legend">
+            <div class="legend-item">
+              <div class="legend-box" style="background: #dff0d8;"></div>
+              <span>Бос орын</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-box" style="background: #f7d08a;"></div>
+              <span>Таңдалған</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-box" style="background: #ddd;"></div>
+              <span>Сатылған</span>
+            </div>
+          </div>
+
+          <!-- Seats Section -->
+          <div class="seats-section" id="stadiums-container">
+            <!-- Stadiums will be rendered here -->
+          </div>
+
+          <!-- Summary -->
+          <div class="summary-box" id="summary" style="display: none;">
+            <h3>Таңдалған орындар:</h3>
+            <p id="selected-seats-text"></p>
+            <div class="buy-section">
+              <button id="buy-btn" class="btn-join">Сатып алу</button>
+              <button id="clear-btn" class="btn-join" style="background: #999;">Тазалау</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; ZHAYYKPOWER — Уральск</p>
+      </div>
+    </footer>
+
+    <script>
+      // Bilingual text
+      const TEXT = {
+        kk: {
+          stadiumLabel: "Стадион таңдаңыз:",
+          available: "Бос орын",
+          selected: "Таңдалған",
+          sold: "Сатылған",
+          stadium1: '"Петро Атоян" атындағы стадион — 8000 орын (2 трибуна)',
+          stadium2: '"Ақжайық" стадионы — 1500 орын (1 трибуна)',
+          tribune: "Трибуна",
+          seat: "Орын",
+          selectedSeats: "Таңдалған орындар",
+          buy: "Сатып алу",
+          clear: "Тазалау",
+          totalPrice: "Ішінара баға"
+        },
+        ru: {
+          stadiumLabel: "Выберите стадион:",
+          available: "Свободно",
+          selected: "Выбрано",
+          sold: "Продано",
+          stadium1: 'Стадион имени "Петро Атояна" — 8000 мест (2 трибуны)',
+          stadium2: 'Стадион "Акжайык" — 1500 мест (1 трибуна)',
+          tribune: "Трибуна",
+          seat: "Место",
+          selectedSeats: "Выбранные места",
+          buy: "Купить",
+          clear: "Очистить",
+          totalPrice: "Итоговая цена"
+        }
+      };
+
+      // Get current language
+      function getCurrentLang() {
+        return localStorage.getItem('lang') || 'kk';
+      }
+
+      // Stadium definitions
+      const STADIUMS = {
+        s8000: {
+          id: 's8000',
+          name: TEXT.kk.stadium1,
+          nameRu: TEXT.ru.stadium1,
+          tribunes: [
+            { id: 'left', name: TEXT.kk.tribune + ' 1', nameRu: TEXT.ru.tribune + ' 1', rows: 40, seatsPerRow: 100 },
+            { id: 'right', name: TEXT.kk.tribune + ' 2', nameRu: TEXT.ru.tribune + ' 2', rows: 40, seatsPerRow: 100 }
+          ]
+        },
+        s1500: {
+          id: 's1500',
+          name: TEXT.kk.stadium2,
+          nameRu: TEXT.ru.stadium2,
+          tribunes: [
+            { id: 'main', name: TEXT.kk.tribune + ' 1', nameRu: TEXT.ru.tribune + ' 1', rows: 30, seatsPerRow: 50 }
+          ]
+        }
+      };
+
+      // Generate random sold seats
+      function randomSold(total, ratio = 0.1) {
+        const soldCount = Math.round(total * ratio);
+        const sold = new Set();
+        while (sold.size < soldCount) {
+          sold.add(Math.floor(Math.random() * total));
+        }
+        return sold;
+      }
+
+      // Read URL parameters
+      function getUrlParams() {
+        const params = new URLSearchParams(window.location.search);
+        const match = params.get('match');
+        const date = params.get('date');
+        return { match, date };
+      }
+
+      function displayMatchInfo() {
+        const { match, date } = getUrlParams();
+        const matchTitle = document.getElementById('match-title');
+        const matchDetails = document.getElementById('match-details');
+
+        if (match && date) {
+          let matchDisplay = match
+            .replace(/-/g, ' ')
+            .replace(/jaiyaq/gi, 'ФК "Жайық"')
+            .replace(/aktobe/gi, 'ФК "Ақтөбе"')
+            .replace(/zhenya/gi, 'ФК "Жеңіс"')
+            .toUpperCase();
+
+          matchTitle.textContent = matchDisplay;
+          matchDetails.textContent = 'Өндіктіктің күні: ' + date + ' · Төменде орындарын таңдаңыз';
+        }
+      }
+
+      // Seat booking logic
+      const container = document.getElementById('stadiums-container');
+      const stadiumSelect = document.getElementById('stadium-select');
+      const buyBtn = document.getElementById('buy-btn');
+      const clearBtn = document.getElementById('clear-btn');
+      const summaryDiv = document.getElementById('summary');
+      const summaryText = document.getElementById('selected-seats-text');
+
+      let selectedSeats = [];
+      const PRICE_PER_SEAT = 5000; // Tenge
+
+      function onSeatClick(e) {
+        const seat = e.currentTarget;
+        if (seat.classList.contains('sold')) return;
+
+        const id = seat.dataset.trib + '_' + seat.dataset.index + '_' + seat.dataset.row + '_' + seat.dataset.col;
+        const human = seat.dataset.tribname + ' ' + seat.dataset.row + '-' + seat.dataset.col;
+
+        if (seat.classList.contains('selected')) {
+          seat.classList.remove('selected');
+          seat.classList.add('available');
+          selectedSeats = selectedSeats.filter(s => s.id !== id);
+        } else {
+          seat.classList.remove('available');
+          seat.classList.add('selected');
+          selectedSeats.push({ id, label: human });
+        }
+        updateSummary();
+      }
+
+      function updateSummary() {
+        if (selectedSeats.length === 0) {
+          summaryDiv.style.display = 'none';
+          return;
+        }
+        summaryDiv.style.display = 'block';
+        const lang = getCurrentLang();
+        const t = TEXT[lang];
+        const labels = selectedSeats.map(s => s.label).join(', ');
+        const totalPrice = selectedSeats.length * PRICE_PER_SEAT;
+        summaryText.textContent = labels + ' | ' + t.totalPrice + ': ' + totalPrice + ' ₸';
+      }
+
+      function renderStadium(key) {
+        container.innerHTML = '';
+        selectedSeats = [];
+        summaryDiv.style.display = 'none';
+
+        const lang = getCurrentLang();
+        const s = STADIUMS[key];
+        const wrapper = document.createElement('div');
+
+        const title = document.createElement('h3');
+        title.textContent = lang === 'ru' ? s.nameRu : s.name;
+        wrapper.appendChild(title);
+
+        const tribunesDiv = document.createElement('div');
+        tribunesDiv.className = 'tribunes';
+
+        s.tribunes.forEach((trib, triIndex) => {
+          const tribDiv = document.createElement('div');
+          tribDiv.className = 'tribune';
+          
+          const h4 = document.createElement('h4');
+          h4.textContent = (lang === 'ru' ? trib.nameRu : trib.name) + ' — ' + (trib.rows * trib.seatsPerRow) + ' орын';
+          tribDiv.appendChild(h4);
+
+          const seatsGrid = document.createElement('div');
+          seatsGrid.className = 'seats-grid';
+          const cols = Math.min(trib.seatsPerRow, 40);
+          seatsGrid.style.gridTemplateColumns = `repeat(${cols}, 24px)`;
+
+          const total = trib.rows * trib.seatsPerRow;
+          const soldSet = randomSold(total, 0.08);
+
+          for (let r = 0; r < trib.rows; r++) {
+            for (let c = 0; c < trib.seatsPerRow; c++) {
+              const idx = r * trib.seatsPerRow + c;
+              const seat = document.createElement('div');
+              seat.className = 'seat';
+              seat.dataset.trib = triIndex;
+              seat.dataset.row = r + 1;
+              seat.dataset.col = c + 1;
+              seat.dataset.index = idx;
+              seat.dataset.tribname = lang === 'ru' ? trib.nameRu : trib.name;
+
+              if (soldSet.has(idx)) {
+                seat.classList.add('sold');
+                seat.textContent = '✕';
+              } else {
+                seat.classList.add('available');
+                seat.addEventListener('click', onSeatClick);
+              }
+              seatsGrid.appendChild(seat);
+            }
+          }
+          tribDiv.appendChild(seatsGrid);
+          tribunesDiv.appendChild(tribDiv);
+        });
+
+        wrapper.appendChild(tribunesDiv);
+        container.appendChild(wrapper);
+      }
+
+      // Event listeners
+      stadiumSelect.addEventListener('change', () => renderStadium(stadiumSelect.value));
+
+      buyBtn.addEventListener('click', () => {
+        if (selectedSeats.length === 0) {
+          alert('Орындарды таңдаңыз');
+          return;
+        }
+        const seatParam = selectedSeats.map(s => encodeURIComponent(s.label)).join(';');
+        const totalPrice = selectedSeats.length * PRICE_PER_SEAT;
+        alert('Сатып алу: ' + seatParam + '\nБаға: ' + totalPrice + ' ₸');
+      });
+
+      clearBtn.addEventListener('click', () => {
+        selectedSeats = [];
+        renderStadium(stadiumSelect.value);
+        updateSummary();
+      });
+
+      // Initialize
+      window.addEventListener('DOMContentLoaded', () => {
+        displayMatchInfo();
+        renderStadium(stadiumSelect.value);
+      });
+    </script>
+  </body>
+</html>

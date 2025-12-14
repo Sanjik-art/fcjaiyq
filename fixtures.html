@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="kk">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>FC JAIYQ | Матчтар</title>
+        <link rel="stylesheet" href="CSS/jaiyq.css">
+        <script src="js/lang.js" defer></script>
+    </head>
+    <body data-page="fixtures">
+
+        <header class="site-header" role="banner">
+            <div class="container header-inner">
+                <div class="logo">
+                    <a href="indexjaiyq.html" aria-label="FC JAIYQ басты бет">
+                        <img src="png/emblem1.png" alt="FC JAIYQ Logo" style="height: 40px; margin-right: 10px; vertical-align: middle;">
+                        FC JAIYQ
+                    </a>
+                </div>
+                <nav class="main-nav" role="navigation" aria-label="Primary">
+                    <ul>
+                        <li><a href="indexjaiyq.html" data-key="home">Басты бет</a></li>
+                        <li><a href="team.html" data-key="team">Команда</a></li>
+                        <li><a href="news.html" data-key="news">Жаңалықтар</a></li>
+                        <li><a href="fixtures.html" data-key="fixtures">Матчтар</a></li>
+                        <li><a href="tickets.html" data-key="tickets">Билеттер</a></li>
+                        <li><a href="contact.html" data-key="contact">Байланыс</a></li>
+                    </ul>
+                </nav>
+
+                <div class="language-switcher" aria-label="Тіл таңдау">
+                    <button type="button" data-lang="kk">Қазақша</button>
+                    <button type="button" data-lang="ru">Русский</button>
+                </div>
+            </div>
+        </header>
+
+        <main id="main" class="fixtures-section">
+            <div class="container">
+                <h1 data-key="fixtures">Матчтар</h1>
+                <p class="muted">Суреттерді `png/` қалтасына орналастырыңыз және төмендегі шаблонды көшіріп, <code>&lt;img src="png/your-image.jpg"&gt;</code> элементін пайдаланыңыз.</p>
+
+                <div class="fixtures-grid">
+                    <!-- Match card: put your team image in png/ and update src -->
+                    <article class="match-card">
+                        <div class="match-media">
+                            <img src="png/match1.jpg" alt="ФК &quot;Жайық&quot; vs ФК Ақтөбе">
+                        </div>
+                        <div class="match-info">
+                            <div class="date">2026-03-21 · 18:00</div>
+                            <div class="teams">ФК "Жайық"<span style="color:var(--light-blue)">vs</span>ФК"Ақтөбе"</div>
+                            <div class="match-meta">
+                                <div class="venue muted">Ақжайық стадионы</div>
+                                <a href="tickets.html?match=jaiyaq-vs-aktobe&date=2026-03-21" class="btn-join">Билеттер</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="match-card">
+                        <div class="match-media">
+                            <img src="png/match2.jpg" alt="ФК &quot;Жайық&quot; vs ФК &quot;Жеңіс&quot;">
+                        </div>
+                        <div class="match-info">
+                            <div class="date">2026-03-28 · 16:00</div>
+                            <div class="teams">ФК "Жайық" <span style="color:var(--light-blue)">vs</span> ФК "Жеңіс"</div>
+                            <div class="match-meta">
+                                <div class="venue muted">Петро Атоян атындағы стадион</div>
+                                <a href="tickets.html?match=jaiyaq-vs-zhenya&date=2026-03-28" class="btn-join">Билеттер</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Add more match-card blocks as needed -->
+                </div>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <p>&copy; ZHAYYKPOWER — Уральск</p>
+            </div>
+        </footer>
+    </body>
+</html>

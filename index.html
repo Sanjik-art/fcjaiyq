@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="kk">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="FC JAIYQ ресми клуб сайты — жаңалықтар, матчтар және команда туралы ақпарат">
+    <title>FC JAIYQ | Басты бет</title>
+    <link rel="stylesheet" href="CSS/jaiyq.css">
+    <!-- lang.js is expected to be in the js/ folder in this project -->
+    <script src="js/lang.js" defer></script>
+  </head>
+  <body>
+
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <div class="logo">
+          <a href="indexjaiyq.html" aria-label="FC JAIYQ басты бет">
+            <img src="png/emblem1.png" alt="FC JAIYQ Logo" style="height: 40px; margin-right: 10px; vertical-align: middle;">
+            FC JAIYQ
+          </a>
+        </div>
+
+        <nav class="main-nav" role="navigation" aria-label="Primary">
+          <ul>
+            <li><a href="indexjaiyq.html" data-key="home">Басты бет</a></li>
+            <li><a href="team.html" data-key="team">Құрама</a></li>
+            <li><a href="news.html" data-key="news">Жаңалықтар</a></li>
+            <li><a href="fixtures.html" data-key="fixtures">Матчтар</a></li>
+            <li><a href="tickets.html" data-key="tickets">Билеттер</a></li>
+            <li><a href="contact.html" data-key="contact">Байланыс</a></li>
+          </ul>
+        </nav>
+
+        <div class="language-switcher" aria-label="Тіл таңдау">
+          <button type="button" onclick="setLanguage('kk')">Қазақша</button>
+          <button type="button" onclick="setLanguage('ru')">Русский</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero">
+        <div class="container">
+          <h1 data-key="welcome">Қош келдіңіз!</h1>
+          <p data-key="intro">FC JAIYQ клубының ресми сайтына кірдіңіз.</p>
+        </div>
+      </section>
+
+      <!-- Statistics Section -->
+      <section class="stats-section">
+        <div class="container">
+          <h2 data-key="stats_title">Статистика</h2>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-number">42</div>
+              <p data-key="stat_matches">Матчтар</p>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">28</div>
+              <p data-key="stat_wins">Жеңіс</p>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">8</div>
+              <p data-key="stat_draws">Тең</p>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">6</div>
+              <p data-key="stat_losses">Ойпотай</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recent News Section -->
+      <section class="news-highlights">
+        <div class="container">
+          <h2 data-key="recent_news">Соңғы жаңалықтар</h2>
+          <div class="news-grid">
+            <article class="news-preview">
+              <div class="news-image" style="background: linear-gradient(135deg, var(--light-blue), var(--light-blue-light));"></div>
+              <h3 data-key="news_item1_title">Жаңа маусым басталды</h3>
+              <p data-key="news_item1_text">Біздің команда жаңа маусымды жеңіспен бастады. Тағы да көп жаңалықтар алда.</p>
+              <a href="news.html" class="read-more" data-key="read_more">Толығырақ →</a>
+            </article>
+
+            <article class="news-preview">
+              <div class="news-image" style="background: linear-gradient(135deg, var(--light-blue-light), var(--light-blue-dark));"></div>
+              <h3>Команда жаңа ойыншыларды іріктеу жүргізді</h3>
+              <p>FC JAIYQ академиясы жұмысын жалғастырып, жас таланттарды іріктеп алып жатыр.</p>
+              <a href="news.html" class="read-more" data-key="read_more">Толығырақ →</a>
+            </article>
+
+            <article class="news-preview">
+              <div class="news-image" style="background: linear-gradient(135deg, var(--light-blue-dark), var(--accent-dark));"></div>
+              <h3>Чемпионат жүргіліп жатыр</h3>
+              <p>Аймақтық чемпионатта біздің ойыншылар үздік ойындарын көрсетіп байналарын жеңіп отыр.</p>
+              <a href="news.html" class="read-more" data-key="read_more">Толығырақ →</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Nearest Matches Section -->
+      <section class="nearest-matches">
+        <div class="container">
+          <h2 data-key="upcoming_matches">Алдағы матчтар</h2>
+          <div class="matches-list">
+            <article class="match-preview">
+              <div class="match-date">
+                <div class="day">21</div>
+                <div class="month">Наур</div>
+              </div>
+              <div class="match-teams">
+                <div class="team">ФК "Жайық"</div>
+                <div class="vs">vs</div>
+                <div class="team">ФК "Ақтөбе"</div>
+              </div>
+              <div class="match-time">18:00</div>
+              <a href="fixtures.html?match=jaiyaq-vs-aktobe&date=2026-03-21" class="btn-join">Толығырақ</a>
+            </article>
+
+            <article class="match-preview">
+              <div class="match-date">
+                <div class="day">28</div>
+                <div class="month">Наур</div>
+              </div>
+              <div class="match-teams">
+                <div class="team">ФК "Жайық"</div>
+                <div class="vs">vs</div>
+                <div class="team">ФК "Жеңіс"</div>
+              </div>
+              <div class="match-time">16:00</div>
+              <a href="fixtures.html?match=jaiyaq-vs-zhenya&date=2026-03-28" class="btn-join">Толығырақ</a>
+            </article>
+
+            <article class="match-preview">
+              <div class="match-date">
+                <div class="day">04</div>
+                <div class="month">Сәу</div>
+              </div>
+              <div class="match-teams">
+                <div class="team">ФК "Жайық"</div>
+                <div class="vs">vs</div>
+                <div class="team">ФК "Тарбағай"</div>
+              </div>
+              <div class="match-time">19:00</div>
+              <a href="fixtures.html" class="btn-join">Толығырақ</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tickets CTA Section -->
+      <section class="tickets-cta">
+        <div class="container">
+          <div class="cta-content">
+            <h2 data-key="get_tickets">Билеттерді сатып алыңыз</h2>
+            <p data-key="tickets_subtitle">Өндіктіктерге билеттерді сатып алу үшін төменгі түймені басыңыз</p>
+            <a href="tickets.html" class="btn-join btn-large">Билеттер сатып алу</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; ZHAYYKPOWER — Уральск</p>
+      </div>
+    </footer>
+  </body>
+</html>
