@@ -4,8 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>FC JAIYQ | Құрама</title>
-    <link rel="stylesheet" href="CSS/jaiyq.css">
-    <script src="js/lang.js" defer></script>
+  <link rel="stylesheet" href="CSS/jaiyq.css">
+  <link rel="stylesheet" href="CSS/team.css">
+  <script src="js/lang.js" defer></script>
+  <script src="js/players-data.js" defer></script>
+  <script src="js/team.js" defer></script>
   </head>
   <body>
 
@@ -40,9 +43,16 @@
       <section class="team-section">
         <div class="container">
           <h1 data-key="team">Команда</h1>
-          <div class="player-list">
-            <div class="player-card">Ойыншы аты / Имя игрока</div>
-            <div class="player-card">Ойыншы аты / Имя игрока</div>
+
+          <!-- Players will be rendered here by js/team.js -->
+          <div id="players-root">
+            <!-- Position groups injected here -->
+          </div>
+
+          <!-- Coaching staff (rendered statically) -->
+          <div class="coach-card" id="coach-card">
+            <h3 data-key="coaching_staff">Бапкерлер штабы</h3>
+            <p><strong>Вячеслав Невольников</strong> — <span data-key="head_coach">Бас бапкер</span> (<span data-key="age">Жасы</span>: 38, <span data-key="citizenship">Азаматтығы</span>: Қазақстан)</p>
           </div>
         </div>
       </section>
