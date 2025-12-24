@@ -1,0 +1,45 @@
+/* players-data.js
+   Exposes a global PLAYERS array. Each player object follows the requested schema:
+   { id, name, number, position, photo, age, height, weight, nationality, stats }
+*/
+window.PLAYERS = [
+  // Goalkeepers
+  { id: 'p21', name: 'Bakitov Azat', number: 21, position: 'Goalkeeper', photo: 'png/players/p21.jpg', age: 23, height: '188 cm', weight: '82 kg', nationality: 'Kazakhstan', stats: { games:12, minutes:1080, cleanSheets:6, goals:0, assists:0 } },
+  { id: 'p1', name: 'Arystanov Maksat', number: 1, position: 'Goalkeeper', photo: 'png/players/p1.jpg', age: 21, height: '185 cm', weight: '80 kg', nationality: 'Kazakhstan', stats: { games:8, minutes:720, cleanSheets:3, goals:0, assists:0 } },
+  { id: 'p99', name: 'Latychevskiy Aleksandr', number: 99, position: 'Goalkeeper', photo: 'png/players/p99.jpg', age: 19, height: '183 cm', weight: '78 kg', nationality: 'Kazakhstan', stats: { games:6, minutes:540, cleanSheets:2, goals:0, assists:0 } },
+
+  // Defenders
+  { id: 'p14', name: 'Omarov Bauyrzhan', number: 14, position: 'Defender', photo: 'png/players/p14.jpg', age: 35, height: '187 cm', weight: '85 kg', nationality: 'Kazakhstan', stats: { games:20, minutes:1800, goals:2, assists:1 } },
+  { id: 'p18', name: 'Gaysiyev Salamat', number: 18, position: 'Defender', photo: 'png/players/p18.jpg', age: 21, height: '180 cm', weight: '75 kg', nationality: 'Kazakhstan', stats: { games:12, minutes:1020, goals:1, assists:0 } },
+  { id: 'p77', name: 'Abdrakhmanov Eldar', number: 77, position: 'Defender', photo: 'png/players/p77.jpg', age: 38, height: '190 cm', weight: '88 kg', nationality: 'Kazakhstan', stats: { games:18, minutes:1600, goals:0, assists:2 } },
+  { id: 'p33', name: 'Zhurasov Alimzhan', number: 33, position: 'Defender', photo: 'png/players/p33.jpg', age: 18, height: '179 cm', weight: '72 kg', nationality: 'Kazakhstan', stats: { games:3, minutes:240, goals:0, assists:0 } },
+  { id: 'p4', name: 'Kuanishkerey Alibi', number: 4, position: 'Defender', photo: 'png/players/p4.jpg', age: 18, height: '176 cm', weight: '70 kg', nationality: 'Kazakhstan', stats: { games:4, minutes:320, goals:0, assists:0 } },
+  { id: 'p29', name: 'Amirgaliyev Madi', number: 29, position: 'Defender', photo: 'png/players/p29.jpg', age: 18, height: '181 cm', weight: '74 kg', nationality: 'Kazakhstan', stats: { games:5, minutes:410, goals:0, assists:0 } },
+  { id: 'p27', name: 'Ayyp-Nurtas Torekhan', number: 27, position: 'Defender', photo: 'png/players/p27.jpg', age: 24, height: '184 cm', weight: '78 kg', nationality: 'Kazakhstan', stats: { games:14, minutes:1200, goals:1, assists:0 } },
+
+  // Midfielders
+  { id: 'p7', name: 'Imangaziyev Bekzat', number: 7, position: 'Midfielder', photo: 'png/players/p7.jpg', age: 24, height: '176 cm', weight: '70 kg', nationality: 'Kazakhstan', stats: { games:19, minutes:1600, goals:4, assists:5 } },
+  { id: 'p8', name: 'Umbetov Temirlan', number: 8, position: 'Midfielder', photo: 'png/players/p8.jpg', age: 21, height: '178 cm', weight: '73 kg', nationality: 'Kazakhstan', stats: { games:12, minutes:980, goals:2, assists:1 } },
+  { id: 'p11', name: 'Odzhiev Magomed', number: 11, position: 'Midfielder', photo: 'png/players/p11.jpg', age: 24, height: '180 cm', weight: '76 kg', nationality: 'Kazakhstan', stats: { games:17, minutes:1400, goals:3, assists:3 } },
+  { id: 'p17', name: 'Amangeldiyev Islam', number: 17, position: 'Midfielder', photo: 'png/players/p17.jpg', age: 20, height: '175 cm', weight: '69 kg', nationality: 'Kazakhstan', stats: { games:10, minutes:820, goals:1, assists:0 } },
+  { id: 'p19', name: 'Gladchenko Maksim', number: 19, position: 'Midfielder', photo: 'png/players/p19.jpg', age: 28, height: '182 cm', weight: '79 kg', nationality: 'Kazakhstan', stats: { games:21, minutes:1890, goals:5, assists:6 } },
+  { id: 'p23', name: 'Murat Erasyl', number: 23, position: 'Midfielder', photo: 'png/players/p23.jpg', age: 19, height: '177 cm', weight: '71 kg', nationality: 'Kazakhstan', stats: { games:6, minutes:420, goals:0, assists:1 } },
+  { id: 'p96', name: 'Antipov Ivan', number: 96, position: 'Midfielder', photo: 'png/players/p96.jpg', age: 29, height: '183 cm', weight: '80 kg', nationality: 'Kazakhstan', stats: { games:20, minutes:1700, goals:2, assists:4 } },
+  { id: 'p44', name: 'Mutigolla Aymar', number: 44, position: 'Midfielder', photo: 'png/players/p44.jpg', age: 18, height: '174 cm', weight: '68 kg', nationality: 'Kazakhstan', stats: { games:2, minutes:90, goals:0, assists:0 } },
+  { id: 'p34', name: 'Astakhov Artem', number: 34, position: 'Midfielder', photo: 'png/players/p34.jpg', age: 21, height: '179 cm', weight: '74 kg', nationality: 'Kazakhstan', stats: { games:11, minutes:870, goals:1, assists:1 } },
+  { id: 'p22', name: 'Berdauletov Samat', number: 22, position: 'Midfielder', photo: 'png/players/p22.jpg', age: 25, height: '180 cm', weight: '76 kg', nationality: 'Kazakhstan', stats: { games:15, minutes:1300, goals:3, assists:2 } },
+  { id: 'p10', name: 'Mukashev Batyr', number: 10, position: 'Midfielder', photo: 'png/players/p10.jpg', age: 22, height: '175 cm', weight: '72 kg', nationality: 'Kazakhstan', stats: { games:18, minutes:1600, goals:6, assists:3 } },
+  { id: 'p71', name: 'Akhmet Aybar', number: 71, position: 'Midfielder', photo: 'png/players/p71.jpg', age: 19, height: '178 cm', weight: '73 kg', nationality: 'Kazakhstan', stats: { games:3, minutes:210, goals:0, assists:0 } },
+  { id: 'p97', name: 'Bolatov Yusup', number: 97, position: 'Midfielder', photo: 'png/players/p97.jpg', age: 20, height: '176 cm', weight: '71 kg', nationality: 'Kazakhstan', stats: { games:5, minutes:390, goals:0, assists:0 } },
+  { id: 'p70', name: 'Sultantemirov Adil', number: 70, position: 'Midfielder', photo: 'png/players/p70.jpg', age: 19, height: '177 cm', weight: '72 kg', nationality: 'Kazakhstan', stats: { games:4, minutes:260, goals:0, assists:0 } },
+  { id: 'p66', name: 'Tobaniyaz Alibek', number: 66, position: 'Midfielder', photo: 'png/players/p66.jpg', age: 18, height: '174 cm', weight: '69 kg', nationality: 'Kazakhstan', stats: { games:2, minutes:140, goals:0, assists:0 } },
+
+  // Forwards
+  { id: 'p95', name: 'Geronimus Ivan', number: 95, position: 'Forward', photo: 'png/players/p95.jpg', age: 18, height: '180 cm', weight: '73 kg', nationality: 'Kazakhstan', stats: { games:7, minutes:420, goals:3, assists:1 } },
+  { id: 'p9', name: 'Kubashev Chingiz', number: 9, position: 'Forward', photo: 'png/players/p9.jpg', age: 19, height: '182 cm', weight: '75 kg', nationality: 'Kazakhstan', stats: { games:12, minutes:980, goals:5, assists:2 } },
+  { id: 'p68', name: 'Murat Torekhan', number: 68, position: 'Forward', photo: 'png/players/p68.jpg', age: 18, height: '179 cm', weight: '72 kg', nationality: 'Kazakhstan', stats: { games:3, minutes:180, goals:0, assists:0 } }
+];
+
+/* Note: place player photos under png/players/ with the filenames used above (p21.jpg, p1.jpg, etc.).
+   If you don't have images yet, use a placeholder or create blank files with those names.
+*/
