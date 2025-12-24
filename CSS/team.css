@@ -1,0 +1,47 @@
+/* Team page styles: player cards and profile layout */
+:root{
+  --brand: #1e90ff; /* main light blue */
+  --muted:#6b7280;
+  --card-bg: #fff;
+  --bg: #f4fbff;
+  --glass: rgba(255,255,255,0.7);
+}
+body { background: var(--bg); font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color:#0b2440; }
+.container { max-width:1100px; margin:0 auto; padding:20px; }
+.players-section h2 { font-size:1.6rem; margin:18px 0; color:var(--brand); }
+.position-group { margin-bottom:34px; }
+.players-grid { display:grid; grid-template-columns: repeat(auto-fill,minmax(180px,1fr)); gap:18px; }
+.player-card { background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.95)); border-radius:10px; overflow:hidden; box-shadow:0 6px 18px rgba(14,30,37,0.06); cursor:pointer; transition:transform .22s,box-shadow .22s; display:flex; flex-direction:column; }
+.player-card:hover{ transform:translateY(-6px); box-shadow:0 14px 30px rgba(14,30,37,0.12); }
+.player-photo { width:100%; aspect-ratio:4/5; object-fit:cover; background:linear-gradient(135deg,#e6f7ff,#f7fcff); }
+.player-info { padding:10px 12px; display:flex; flex-direction:column; gap:6px; }
+.player-name { font-weight:700; font-size:1rem; }
+.player-number { color:var(--brand); font-weight:700; }
+.player-meta { color:var(--muted); font-size:0.9rem; }
+.player-bottom { margin-top:auto; border-top:1px dashed rgba(0,0,0,0.06); padding:8px 12px; font-size:0.85rem; color:var(--muted); display:flex; justify-content:space-between; align-items:center; }
+.player-bottom .age { font-weight:600; }
+
+/* Profile page */
+.profile-hero { display:grid; grid-template-columns: 320px 1fr; gap:24px; align-items:start; margin:24px 0; }
+.profile-photo { width:100%; border-radius:12px; object-fit:cover; background:linear-gradient(135deg,#e6f7ff,#f7fcff); }
+.profile-card { background:var(--card-bg); padding:18px; border-radius:10px; box-shadow:0 8px 20px rgba(14,30,37,0.06); }
+.profile-name { font-size:1.6rem; font-weight:800; color:var(--brand); }
+.profile-meta { color:var(--muted); margin-top:6px; }
+.stats-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(120px,1fr)); gap:12px; margin-top:16px; }
+.stat { background: linear-gradient(180deg,#fff,#f7fbff); padding:12px; border-radius:8px; text-align:center; }
+.stat strong{ display:block; font-size:1.2rem; color:#0b2440; }
+.stat small{ color:var(--muted); }
+.bio { margin-top:16px; color:#102a43; line-height:1.5; }
+
+/* Responsive */
+@media (max-width:700px){
+  .profile-hero{ grid-template-columns: 1fr; }
+  .players-grid{ grid-template-columns: repeat(auto-fill,minmax(140px,1fr)); }
+}
+
+/* Utility */
+.center { text-align:center; }
+.link-button { display:inline-block; padding:8px 12px; border-radius:8px; background:var(--brand); color:#fff; text-decoration:none; font-weight:700; }
+
+/* small coaching staff */
+.coach-card{ margin-top:20px; padding:14px; background:var(--card-bg); border-radius:8px; box-shadow:0 6px 18px rgba(14,30,37,0.04); }
