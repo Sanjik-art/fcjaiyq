@@ -86,15 +86,19 @@
           <div class="legend">
             <div class="legend-item">
               <div class="legend-box" style="background: #dff0d8;"></div>
-              <span>Бос орын</span>
+              <span id="legend-available">Бос орын</span>
             </div>
             <div class="legend-item">
               <div class="legend-box" style="background: #f7d08a;"></div>
-              <span>Таңдалған</span>
+              <span id="legend-selected">Таңдалған</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-box" style="background: #cde7ff;"></div>
+              <span id="legend-child">Балалар билеті</span>
             </div>
             <div class="legend-item">
               <div class="legend-box" style="background: #ddd;"></div>
-              <span>Сатылған</span>
+              <span id="legend-sold">Сатылған</span>
             </div>
           </div>
 
@@ -125,13 +129,13 @@
     <script>
       // Bilingual text
       const TEXT = {
-        kk: {
+    kk: {
           stadiumLabel: "Стадион таңдаңыз:",
           available: "Бос орын",
           selected: "Таңдалған",
           sold: "Сатылған",
-          stadium1: '"Петро Атоян" атындағы стадион — 8000 орын (2 трибуна)',
-          stadium2: '"Ақжайық" стадионы — 1500 орын (1 трибуна)',
+          stadium1: '"Петро Атоян" атындағы стадион — 8320 орын (2 трибуна)',
+          stadium2: '"Ақжайық" стадионы — 2500 орын (1 трибуна)',
           tribune: "Трибуна",
           seat: "Орын",
           selectedSeats: "Таңдалған орындар",
@@ -139,13 +143,13 @@
           clear: "Тазалау",
           totalPrice: "Ішінара баға"
         },
-        ru: {
+  ru: {
           stadiumLabel: "Выберите стадион:",
           available: "Свободно",
           selected: "Выбрано",
           sold: "Продано",
-          stadium1: 'Стадион имени "Петро Атояна" — 8000 мест (2 трибуны)',
-          stadium2: 'Стадион "Акжайык" — 1500 мест (1 трибуна)',
+          stadium1: 'Стадион имени "Петро Атояна" — 8320 мест (2 трибуны)',
+          stadium2: 'Стадион "Акжайык" — 2500 мест (1 трибуна)',
           tribune: "Трибуна",
           seat: "Место",
           selectedSeats: "Выбранные места",
@@ -163,22 +167,24 @@
       // Stadium definitions
       const STADIUMS = {
         s8000: {
-          id: 's8000',
-          name: TEXT.kk.stadium1,
-          nameRu: TEXT.ru.stadium1,
-          tribunes: [
-            { id: 'left', name: TEXT.kk.tribune + ' 1', nameRu: TEXT.ru.tribune + ' 1', rows: 40, seatsPerRow: 100 },
-            { id: 'right', name: TEXT.kk.tribune + ' 2', nameRu: TEXT.ru.tribune + ' 2', rows: 40, seatsPerRow: 100 }
-          ]
-        },
-        s1500: {
-          id: 's1500',
-          name: TEXT.kk.stadium2,
-          nameRu: TEXT.ru.stadium2,
-          tribunes: [
-            { id: 'main', name: TEXT.kk.tribune + ' 1', nameRu: TEXT.ru.tribune + ' 1', rows: 30, seatsPerRow: 50 }
-          ]
-        }
+            id: 's8000',
+            name: TEXT.kk.stadium1,
+            nameRu: TEXT.ru.stadium1,
+            // 2 tribunes, each 4160 seats (total 8320). Use rows x seatsPerRow = 4160
+            tribunes: [
+              { id: 'left', name: TEXT.kk.tribune + ' 1', nameRu: TEXT.ru.tribune + ' 1', rows: 52, seatsPerRow: 80 },
+              { id: 'right', name: TEXT.kk.tribune + ' 2', nameRu: TEXT.ru.tribune + ' 2', rows: 52, seatsPerRow: 80 }
+            ]
+          },
+          s1500: {
+            id: 's1500',
+            name: TEXT.kk.stadium2,
+            nameRu: TEXT.ru.stadium2,
+            // 1 tribune, 2500 seats (rows x seatsPerRow = 2500)
+            tribunes: [
+              { id: 'main', name: TEXT.kk.tribune + ' 1', nameRu: TEXT.ru.tribune + ' 1', rows: 50, seatsPerRow: 50 }
+            ]
+          }
       };
 
       // Generate random sold seats

@@ -4,6 +4,12 @@
   // Translation dictionary with support for page-specific strings (pages.news)
   const translations = {
     kk: {
+      more_info: 'Толығырақ',
+      years: 'жыл',
+      pos_goalkeepers: 'Қақпашылар',
+      pos_defenders: 'Қорғаушылар',
+      pos_midfielders: 'Жартылай қорғаушылар',
+      pos_forwards: 'Шабуылшылар',
       home: 'Басты бет',
       team: 'Құрама',
       news: 'Жаңалықтар',
@@ -19,16 +25,16 @@
       stat_draws: 'Тең',
       stat_losses: 'Жеңіліс',
       recent_news: 'Соңғы жаңалықтар',
-  coaching_staff: 'Бапкерлер штабы',
-  head_coach: 'Бас бапкер',
-  age: 'Жасы',
-  citizenship: 'Азаматтығы',
+      coaching_staff: 'Бапкерлер құрамы',
+      head_coach: 'Бас бапкер',
+      age: 'Жасы',
+      citizenship: 'Азаматтығы',
       news_item1_title: 'Жаңа маусым басталды',
       news_item1_text: 'Біздің команда жаңа маусымды жеңіспен бастады. Тағы да көп жаңалықтар алда.',
       read_more: 'Толығырақ →',
       upcoming_matches: 'Алдағы матчтар',
       get_tickets: 'Билеттерді сатып алыңыз',
-      tickets_subtitle: 'Өндіктіктерге билеттерді сатып алу үшін төменгі түймені басыңыз',
+      tickets_subtitle: 'Билеттерді сатып алу үшін төменгі түймені басыңыз',
       price: 'Баға',
       buy_button: 'Сатып алу',
       pages: {
@@ -42,6 +48,12 @@
       }
     },
     ru: {
+      more_info: 'Подробнее',
+      years: 'лет',
+      pos_goalkeepers: 'Вратари',
+      pos_defenders: 'Защитники',
+      pos_midfielders: 'Полузащитники',
+      pos_forwards: 'Нападающие',
       home: 'Главная',
       team: 'Команда',
       news: 'Новости',

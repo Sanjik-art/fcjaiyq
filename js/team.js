@@ -31,9 +31,9 @@
     const info = document.createElement('div');
     info.className='player-info';
 
-    const name = document.createElement('div'); name.className='player-name'; name.textContent = player.name;
-    const num = document.createElement('div'); num.className='player-number'; num.textContent = '#'+player.number;
-    const meta = document.createElement('div'); meta.className='player-meta'; meta.textContent = player.nationality;
+  const name = document.createElement('div'); name.className='player-name'; name.textContent = player.name;
+  const num = document.createElement('div'); num.className='player-number'; num.textContent = '#'+player.number;
+  const meta = document.createElement('div'); meta.className='player-meta'; meta.textContent = player.nationality;
 
     info.appendChild(name);
     info.appendChild(num);
@@ -41,9 +41,12 @@
 
     a.appendChild(info);
 
-    const bottom = document.createElement('div'); bottom.className='player-bottom';
-    const age = document.createElement('div'); age.className='age'; age.textContent = player.age + ' yrs';
-    const more = document.createElement('div'); more.textContent = 'Подробнее'; more.className='muted';
+  const bottom = document.createElement('div'); bottom.className='player-bottom';
+  const age = document.createElement('div'); age.className='age';
+  // show number and localized years label
+  age.innerHTML = player.age + ' <span data-key="years">жыл</span>';
+  const more = document.createElement('div'); more.textContent = ''; more.className='muted';
+  more.setAttribute('data-key','more_info');
     bottom.appendChild(age);
     bottom.appendChild(more);
     a.appendChild(bottom);
@@ -57,9 +60,15 @@
     const section = document.createElement('section');
     section.className = 'position-group';
 
-    const title = document.createElement('h2');
-    // Localized titles could be added via data-key; fallback to positions
-    title.textContent = pos === 'Goalkeeper' ? 'Goalkeepers' : (pos+'s');
+      const h2 = document.createElement('h2');
+      // use data-key for translation
+      const key = groupNames[pos] || null;
+      if (key) {
+        h2.setAttribute('data-key', key);
+        h2.textContent = translate(key);
+      } else {
+        h2.textContent = pos;
+      }
     section.appendChild(title);
 
     const grid = document.createElement('div');
