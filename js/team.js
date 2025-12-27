@@ -9,6 +9,12 @@
 
   // Group players by position preserving order
   const order = ['Goalkeeper','Defender','Midfielder','Forward'];
+  const groupNames = {
+    Goalkeeper: 'pos_goalkeepers',
+    Defender: 'pos_defenders',
+    Midfielder: 'pos_midfielders',
+    Forward: 'pos_forwards'
+  };
   const groups = {};
   order.forEach(k=>groups[k]=[]);
   (window.PLAYERS||[]).forEach(p=>{
@@ -61,15 +67,15 @@
     section.className = 'position-group';
 
       const h2 = document.createElement('h2');
-      // use data-key for translation
+      // use data-key for translation; fallback to raw position name
       const key = groupNames[pos] || null;
       if (key) {
         h2.setAttribute('data-key', key);
-        h2.textContent = translate(key);
+        h2.textContent = pos; // will be replaced by translatePage when lang initializes
       } else {
         h2.textContent = pos;
       }
-    section.appendChild(title);
+      section.appendChild(h2);
 
     const grid = document.createElement('div');
     grid.className='players-grid';
