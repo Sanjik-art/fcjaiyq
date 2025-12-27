@@ -9,34 +9,7 @@
   <script src="js/lang.js" defer></script>
   <script src="js/players-data.js" defer></script>
 
-  <!-- debug helper: shows if players data loaded; will be removed after troubleshooting -->
-  <script defer>
-    document.addEventListener('DOMContentLoaded', function(){
-      try {
-        var root = document.getElementById('players-root');
-        if (!root) return;
-        var status = document.createElement('div');
-        status.style.padding = '8px 12px';
-        status.style.borderRadius = '6px';
-        status.style.marginBottom = '12px';
-        status.style.fontWeight = '700';
-        if (!window.PLAYERS) {
-          status.textContent = 'Debug: players-data.js not loaded or window.PLAYERS undefined. Check Console (DevTools) for errors.';
-          status.style.background = '#ffecec';
-          status.style.color = '#a00';
-          console.error('PLAYERS is not defined');
-        } else {
-          status.textContent = 'Debug: PLAYERS loaded — ' + (window.PLAYERS.length || 0) + ' players.';
-          status.style.background = '#eaffef';
-          status.style.color = '#064';
-          console.log('PLAYERS count:', window.PLAYERS.length);
-        }
-        root.insertBefore(status, root.firstChild);
-      } catch (e) {
-        console.error('debug helper error', e);
-      }
-    });
-  </script>
+  <!-- debug helper removed -->
 
   <!-- team renderer (requires players-data.js) -->
   <script src="js/team.js" defer></script>
