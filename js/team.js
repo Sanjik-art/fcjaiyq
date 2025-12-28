@@ -26,20 +26,29 @@
     const a = document.createElement('a');
     a.className='player-card';
     a.href = 'player.html?id='+encodeURIComponent(player.id);
-    a.setAttribute('aria-label', player.name + ' #' + player.number);
+    // determine current language (read from storage or fallback)
+    function getLang(){
+      try{ const s = localStorage.getItem('jaiyq_lang'); if (s) return s; }catch(e){}
+      const nav = (navigator.language||'').toLowerCase();
+      return nav.startsWith('ru') ? 'ru' : 'kk';
+    }
+    const lang = getLang();
+    const displayName = (player.name && typeof player.name === 'object') ? (player.name[lang]||player.name.en||player.name.ru||player.name.kk) : player.name;
+    a.setAttribute('aria-label', displayName + ' #' + player.number);
 
     const img = document.createElement('img');
     img.className='player-photo';
     img.src = player.photo;
-    img.alt = player.name;
+  img.alt = displayName;
     a.appendChild(img);
 
     const info = document.createElement('div');
     info.className='player-info';
 
-  const name = document.createElement('div'); name.className='player-name'; name.textContent = player.name;
+  const name = document.createElement('div'); name.className='player-name'; name.textContent = displayName;
   const num = document.createElement('div'); num.className='player-number'; num.textContent = '#'+player.number;
-  const meta = document.createElement('div'); meta.className='player-meta'; meta.textContent = player.nationality;
+  const displayNat = (player.nationality && typeof player.nationality === 'object') ? (player.nationality[lang]||player.nationality.en||player.nationality.ru||player.nationality.kk) : player.nationality;
+  const meta = document.createElement('div'); meta.className='player-meta'; meta.textContent = displayNat;
 
     info.appendChild(name);
     info.appendChild(num);

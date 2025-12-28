@@ -16,39 +16,51 @@
     return;
   }
 
+  // determine current language
+  function getLang(){
+    try{ const s = localStorage.getItem('jaiyq_lang'); if (s) return s; }catch(e){}
+    const nav = (navigator.language||'').toLowerCase();
+    return nav.startsWith('ru') ? 'ru' : 'kk';
+  }
+  const lang = getLang();
+
   const hero = document.createElement('div'); hero.className='profile-hero';
 
   const photoWrap = document.createElement('div');
-  const img = document.createElement('img'); img.className='profile-photo'; img.src = player.photo; img.alt = player.name;
+  const displayName = (player.name && typeof player.name==='object') ? (player.name[lang]||player.name.en||player.name.ru||player.name.kk) : player.name;
+  const displayNat = (player.nationality && typeof player.nationality==='object') ? (player.nationality[lang]||player.nationality.en||player.nationality.ru||player.nationality.kk) : player.nationality;
+  const img = document.createElement('img'); img.className='profile-photo'; img.src = player.photo; img.alt = displayName;
   photoWrap.appendChild(img);
   hero.appendChild(photoWrap);
 
   const metaWrap = document.createElement('div');
   const card = document.createElement('div'); card.className='profile-card';
-  const name = document.createElement('div'); name.className='profile-name'; name.textContent = player.name + ' #' + player.number;
-  const meta = document.createElement('div'); meta.className='profile-meta'; meta.textContent = player.position + ' · ' + player.nationality + ' · ' + player.age + ' yrs';
+  const name = document.createElement('div'); name.className='profile-name'; name.textContent = displayName + ' #' + player.number;
+  const meta = document.createElement('div'); meta.className='profile-meta';
+  // create meta with localized nationality and age; use data-key placeholders for labels if needed
+  meta.textContent = player.position + ' · ' + displayNat + ' · ' + player.age + ' ' + (lang === 'ru' ? 'лет' : 'жыл');
   card.appendChild(name); card.appendChild(meta);
 
   // stats block
   const statsGrid = document.createElement('div'); statsGrid.className='stats-grid';
   // common stats: games, minutes, goals, assists
   const s = player.stats || {};
-  function addStat(label, value){ const st = document.createElement('div'); st.className='stat'; st.innerHTML = '<strong>'+ (value==null?'-':value) +'</strong><small>'+label+'</small>'; statsGrid.appendChild(st); }
-  addStat('Games', s.games);
-  addStat('Minutes', s.minutes);
+  function addStat(labelKey, value){ const st = document.createElement('div'); st.className='stat'; st.innerHTML = '<strong>'+ (value==null?'-':value) +'</strong><small data-key="'+labelKey+'">'+labelKey+'</small>'; statsGrid.appendChild(st); }
+  addStat('games', s.games);
+  addStat('minutes', s.minutes);
   if (player.position==='Goalkeeper'){
-    addStat('Clean sheets', s.cleanSheets);
-    addStat('Goals', s.goals || 0);
+    addStat('clean_sheets', s.cleanSheets);
+    addStat('goals', s.goals || 0);
   } else {
-    addStat('Goals', s.goals || 0);
-    addStat('Assists', s.assists || 0);
+    addStat('goals', s.goals || 0);
+    addStat('assists', s.assists || 0);
   }
 
   card.appendChild(statsGrid);
 
   // personal details/bio
   const bio = document.createElement('div'); bio.className='bio';
-  bio.innerHTML = '<strong>Personal</strong><br>Age: '+player.age+'<br>Height: '+(player.height||'—')+'<br>Weight: '+(player.weight||'—')+'<br>Nationality: '+player.nationality;
+  bio.innerHTML = '<strong data-key="personal">Personal</strong><br><span data-key="age_label">Age</span>: '+player.age+'<br><span data-key="height_label">Height</span>: '+(player.height||'—')+'<br><span data-key="weight_label">Weight</span>: '+(player.weight||'—')+'<br><span data-key="nationality_label">Nationality</span>: '+displayNat;
   card.appendChild(bio);
 
   metaWrap.appendChild(card);
